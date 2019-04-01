@@ -17,11 +17,11 @@ public class SolarSystem {
 	}
 
 	public SolarSystem(String title) {
-		name = title;
+		setName(title);
 	}
 	
 	public SolarSystem(String title, Planet in) {
-		name = title;
+		setName(title);
 		planets.add(in);
 		in.setSolarSystem(this);
 	}
@@ -32,7 +32,7 @@ public class SolarSystem {
 	}
 
 	public SolarSystem(String title, Collection<Planet> group) {
-		name = title;
+		setName(title);
 		planets.addAll(group);
 		group.forEach(in -> in.setSolarSystem(this));
 	}
@@ -46,7 +46,7 @@ public class SolarSystem {
 	}
 	
 	public String toString() {
-		return name;
+		return getName();
 	}
 
 	public Galaxy getGalaxy() {
@@ -55,5 +55,20 @@ public class SolarSystem {
 
 	public void setGalaxy(Galaxy galaxy) {
 		this.galaxy = galaxy;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Planet find(String seeking) {
+		for (Planet check: planets)
+			if (check.getName() == seeking)
+				return check;
+		return null;
 	}
 }

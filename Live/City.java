@@ -13,24 +13,28 @@ public class City {
 
 	public City(Neigborhood in) {
 		neigborhoods.add(in);
+		in.setCity(this);
 	}
 
 	public City(String title) {
-		name = title;
+		setName(title);
+	}
+
+	public City(String title, Neigborhood in) {
+		setName(title);
+		neigborhoods.add(in);
+		in.setCity(this);
 	}
 
 	public City(Collection<Neigborhood> group) {
 		neigborhoods.addAll(group);
-	}
-
-	public City(String title, Neigborhood in) {
-		name = title;
-		neigborhoods.add(in);
+		group.forEach(in -> in.setCity(this));
 	}
 
 	public City(String title, Collection<Neigborhood> group) {
-		name = title;
+		setName(title);
 		neigborhoods.addAll(group);
+		group.forEach(in -> in.setCity(this));
 	}
 
 	public ArrayList<Neigborhood> getNeigborhoods() {
@@ -42,7 +46,7 @@ public class City {
 	}
 
 	public String toString() {
-		return name;
+		return getName();
 	}
 
 	public Community getCommunity() {
@@ -51,5 +55,20 @@ public class City {
 
 	public void setCommunity(Community community) {
 		this.community = community;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Neigborhood find(String seeking) {
+		for (Neigborhood check: neigborhoods)
+			if (check.getName() == seeking)
+				return check;
+		return null;
 	}
 }

@@ -18,11 +18,11 @@ public class Planet {
 	}
 
 	public Planet(String title) {
-		name = title;
+		setName(title);
 	}
 
 	public Planet(String title, Continent in) {
-		name = title;
+		setName(title);
 		continents.add(in);
 		in.setPlanet(this);
 	}
@@ -33,7 +33,7 @@ public class Planet {
 	}
 
 	public Planet(String title, Collection<Continent> group) {
-		name = title;
+		setName(title);
 		continents.addAll(group);
 		group.forEach(in -> in.setPlanet(this));
 	}
@@ -55,7 +55,7 @@ public class Planet {
 	}
 
 	public String toString() {
-		return name;
+		return getName();
 	}
 
 	public SolarSystem getSolarSystem() {
@@ -64,5 +64,24 @@ public class Planet {
 
 	public void setSolarSystem(SolarSystem solarSystem) {
 		this.solarSystem = solarSystem;
+	}
+	
+	public Building myAddress() {
+		return this.getContinents().get(0).getCountries().get(1).getStates().get(0).getCommunities().get(0).getCities().get(0).getNeigborhoods().get(0).getStreets().get(0).getBlocks().get(0).getBuildings().get(0);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Continent find(String seeking) {
+		for (Continent check: continents)
+			if (check.getName() == seeking)
+				return check;
+		return null;
 	}
 }

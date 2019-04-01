@@ -13,24 +13,28 @@ public class Block {
 
 	public Block(Building in) {
 		buildings.add(in);
+		in.setBlock(this);
 	}
 
 	public Block(String title) {
-		name = title;
+		setName(title);
+	}
+
+	public Block(String title, Building in) {
+		setName(title);
+		buildings.add(in);
+		in.setBlock(this);
 	}
 
 	public Block(Collection<Building> group) {
 		buildings.addAll(group);
-	}
-
-	public Block(String title, Building in) {
-		name = title;
-		buildings.add(in);
+		group.forEach(in -> in.setBlock(this));
 	}
 
 	public Block(String title, Collection<Building> group) {
-		name = title;
+		setName(title);
 		buildings.addAll(group);
+		group.forEach(in -> in.setBlock(this));
 	}
 
 	public ArrayList<Building> getBuildings() {
@@ -42,6 +46,29 @@ public class Block {
 	}
 
 	public String toString() {
+		return getName();
+	}
+
+	public Street getStreet() {
+		return street;
+	}
+
+	public void setStreet(Street street) {
+		this.street = street;
+	}
+
+	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Building find(String seeking) {
+		for (Building check: buildings)
+			if (check.getName() == seeking)
+				return check;
+		return null;
 	}
 }

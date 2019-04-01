@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import java.util.List;
 
 public class Location {
 	public Multiverse setSimulation() {
@@ -79,8 +78,5 @@ public class Location {
 //		House eighteen06 = new House();
 //		eighteens.getBuildings().add(eighteen06);
 //		return existence;
-	}
-	public void printAddress() {
-		System.out.println();
 	}
 }

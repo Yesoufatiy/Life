@@ -55,4 +55,15 @@ public class Multiverse {
 	public String toString() {
 		return name;
 	}
+	
+	public Planet getWorld() {
+		return getUniverses().get(0).getGalaxies().get(0).getSolarSystems().get(0).getPlanets().get(2);
+	}
+	
+	public Universe find(String seeking) {
+		for (Universe check: universes)
+			if (check.getName() == seeking)
+				return check;
+		return null;
+	}
 }

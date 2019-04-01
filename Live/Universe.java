@@ -64,4 +64,11 @@ public class Universe {
 	public void setMultiverse(Multiverse multiverse) {
 		this.multiverse = multiverse;
 	}
+	
+	public Galaxy find(String seeking) {
+		for (Galaxy check: galaxies)
+			if (check.getName() == seeking)
+				return check;
+		return null;
+	}
 }

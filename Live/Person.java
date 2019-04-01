@@ -5,6 +5,16 @@ public class Person extends Creature {
 	private Person father;
 	private double balance = 0;
 	private HashSet inventory = new HashSet();
+	private String name;
+	private Building place;
+	
+	public Person() {
+		
+	}
+	
+	public Person(String name) {
+		this.setName(name);
+	}
 
 	public boolean hunt(Animal prey) {
 		if (this.getStrength() <= prey.getStrength())
@@ -43,5 +53,45 @@ public class Person extends Creature {
 
 	public void setInventory(HashSet inventory) {
 		this.inventory = inventory;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Person getMother() {
+		return mother;
+	}
+
+	public void setMother(Person mother) {
+		this.mother = mother;
+	}
+
+	public Person getFather() {
+		return father;
+	}
+
+	public void setFather(Person father) {
+		this.father = father;
+	}
+
+	public Building getPlace() {
+		return place;
+	}
+
+	public void setPlace(Building place) {
+		this.place = place;
+	}
+	
+	public String toString() {
+		return name;
+	}
+	
+	public String introduction() {
+		return this.name + " child of " + father.getName() + " and " + mother.getName();
 	}
 }

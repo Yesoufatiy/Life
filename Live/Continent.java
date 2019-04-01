@@ -17,11 +17,11 @@ public class Continent {
 	}
 
 	public Continent(String title) {
-		name = title;
+		setName(title);
 	}
 
 	public Continent(String title, Country in) {
-		name = title;
+		setName(title);
 		countries.add(in);
 		in.setContinent(this);
 	}
@@ -32,7 +32,7 @@ public class Continent {
 	}
 
 	public Continent(String title, Collection<Country> group) {
-		name = title;
+		setName(title);
 		countries.addAll(group);
 		group.forEach(in -> in.setContinent(this));
 	}
@@ -46,7 +46,7 @@ public class Continent {
 	}
 
 	public String toString() {
-		return name;
+		return getName();
 	}
 
 	public Planet getPlanet() {
@@ -55,5 +55,20 @@ public class Continent {
 
 	public void setPlanet(Planet planet) {
 		this.planet = planet;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public Country find(String seeking) {
+		for (Country check: countries)
+			if (check.getName() == seeking)
+				return check;
+		return null;
 	}
 }

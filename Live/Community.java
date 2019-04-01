@@ -17,11 +17,11 @@ public class Community {
 	}
 
 	public Community(String title) {
-		name = title;
+		setName(title);
 	}
 
 	public Community(String title, City in) {
-		name = title;
+		setName(title);
 		cities.add(in);
 		in.setCommunity(this);
 	}
@@ -32,7 +32,7 @@ public class Community {
 	}
 
 	public Community(String title, Collection<City> group) {
-		name = title;
+		setName(title);
 		cities.addAll(group);
 		group.forEach(in -> in.setCommunity(this));
 	}
@@ -46,7 +46,7 @@ public class Community {
 	}
 
 	public String toString() {
-		return name;
+		return getName();
 	}
 
 	public State getState() {
@@ -55,5 +55,20 @@ public class Community {
 
 	public void setState(State state) {
 		this.state = state;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public City find(String seeking) {
+		for (City check: cities)
+			if (check.getName() == seeking)
+				return check;
+		return null;
 	}
 }
