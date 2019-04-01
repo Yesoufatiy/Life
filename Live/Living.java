@@ -1,62 +1,75 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Living {
 	public static void main(String[] args) {
-		Multiverse mine = new Location().setSimulation();
-		Planet myWorld = mine.getUniverses().get(0).getGalaxies().get(0).getSolarSystems().get(0).getPlanets().get(2);
-		Building home = mine.getUniverses().get(0).getGalaxies().get(0).getSolarSystems().get(0).getPlanets().get(2).getContinents().get(0).getCountries().get(1).getStates().get(0).getCommunities().get(0).getCities().get(0).getNeigborhoods().get(0).getStreets().get(0).getBlocks().get(0).getBuildings().get(0);
-//		home.printAddress();
-		Person Yusuf = new Person();
-		Person Malik = new Person();
-		Yusuf.setStrength(19);
-		Malik.setStrength(18);
-		Yusuf.fight(Malik);
-//		mine.find("Laniakea").find("MilkyWay").find("theSolarSystem").find("Earth").find("North America").find("USA").find("California").find("Bay Area").find("San Jose").find("Berryessa").find("Fumia Pl").find("18").find("1806").printAddress();
-		
-		Multiverse newLife = (Multiverse) starterKit().get(0);
-		Planet newWorld = newLife.getWorld();
-		Building newHome = newWorld.myAddress();
-		Person dad = (Person) starterKit().get(1);
-		Person mom = (Person) starterKit().get(2);
-		Person me = new Person("Baby");
-		me.setFather(dad);
-		me.setMother(mom);
-		me.setPlace(newHome);
-		System.out.println(me.introduction() + " and I live at ");
-		me.getPlace().printAddress();
-		System.out.println();
-		System.out.println(starterKit());
-		System.out.println();
-		System.out.println(myStart());
+		System.out.println("How would you like to start? The currently available options are:");
+		System.out.println("'s' for basic starter kit");
+		System.out.println("'y' for a start based on Yusuf's Life");
+		Scanner reader = new Scanner(System.in);
+		String reading = reader.nextLine();
+		while (!reading.equals("Q")) {
+			if (reading.equals("s")) {
+				System.out.println(((Person) starterKit().get(4)).introduction());
+			} else if (reading.equals("y")) {
+				System.out.println(((Person) myStart().get(12)).introduction() + " lives at ");
+				((Person) myStart().get(12)).getPlace().printAddress();
+			} else {
+				System.out.println("I am a little human being child kid and I am homeless and alone and I have nothing.");
+			}
+			reading = reader.nextLine();
+		}
 	}
 	
 	public static ArrayList starterKit() {
 		ArrayList life = new ArrayList();
-		life.add(new Location().setSimulation());
-		life.add(new Person("Adam"));
-		life.add(new Person("Eve"));
+		life.add(new Location().setSimulation());					// 0 multiverse
+		life.add(((Multiverse) life.get(0)).getWorld());			// 1 world
+		life.add(new Person("Adam"));								// 2 man
+		life.add(new Person("Eve"));								// 3 woman
+		life.add(new Person("Baby"));								// 4 kid
+		((Person) life.get(4)).setFather((Person) life.get(2));
+		((Person) life.get(4)).setMother((Person) life.get(3));
 		return life;
 	}
 	
 	public static ArrayList myStart() {
 		ArrayList life = new ArrayList();
-		life.add(new Location().setSimulation());			// 0 multiverse
-		life.add(((Multiverse) life.get(0)).getWorld());	// 1 world
-		life.add(((Planet) life.get(1)).myAddress());		// 2 home
-		life.add(new Person("Mamdouh"));					// 3 dd
-		life.add(new Person("Zeinab"));						// 4 dm
-		life.add(new Person("Farouk"));						// 5 md
-		life.add(new Person("Nadia"));						// 6 mm
-		life.add(new Person("Osama"));						// 7 db
-		life.add(new Person("Ashraf"));						// 8 db
-		life.add(new Person("Hesham"));						// 9 d
-		life.add(new Person("Hatem"));						// 10 mb
-		life.add(new Person("Heba"));						// 11 m
-		life.add(new Person("Yusuf"));						// 12 me
-		life.add(new Person("Leena"));						// 13 s
-		life.add(new Person("Safa"));						// 14 s
-		life.add(new Person("Misk"));						// 15 s
+		life.add(new Location().setSimulation());					// 0 multiverse
+		life.add(((Multiverse) life.get(0)).getWorld());			// 1 world
+		life.add(((Planet) life.get(1)).myAddress());				// 2 home
+		life.add(new Person("Mamdouh"));							// 3 dd
+		life.add(new Person("Zeinab"));								// 4 dm
+		life.add(new Person("Farouk"));								// 5 md
+		life.add(new Person("Nadia"));								// 6 mm
+		life.add(new Person("Osama"));								// 7 db
+		((Person) life.get(7)).setFather((Person) life.get(3));
+		((Person) life.get(7)).setMother((Person) life.get(4));
+		life.add(new Person("Ashraf"));								// 8 db
+		((Person) life.get(8)).setFather((Person) life.get(3));
+		((Person) life.get(8)).setMother((Person) life.get(4));
+		life.add(new Person("Hesham"));								// 9 d
+		((Person) life.get(9)).setFather((Person) life.get(3));
+		((Person) life.get(9)).setMother((Person) life.get(4));
+		life.add(new Person("Hatem"));								// 10 mb
+		((Person) life.get(10)).setFather((Person) life.get(5));
+		((Person) life.get(10)).setMother((Person) life.get(6));
+		life.add(new Person("Heba"));								// 11 m
+		((Person) life.get(11)).setFather((Person) life.get(5));
+		((Person) life.get(11)).setMother((Person) life.get(6));
+		life.add(new Person("Yusuf"));								// 12 me
+		((Person) life.get(12)).setFather((Person) life.get(9));
+		((Person) life.get(12)).setMother((Person) life.get(11));
+		((Person) life.get(12)).setPlace((Building) life.get(2));
+		life.add(new Person("Leena"));								// 13 s
+		((Person) life.get(13)).setFather((Person) life.get(9));
+		((Person) life.get(13)).setMother((Person) life.get(11));
+		life.add(new Person("Safa"));								// 14 s
+		((Person) life.get(14)).setFather((Person) life.get(9));
+		((Person) life.get(14)).setMother((Person) life.get(11));
+		life.add(new Person("Misk"));								// 15 s
+		((Person) life.get(15)).setFather((Person) life.get(9));
+		((Person) life.get(15)).setMother((Person) life.get(11));
 		return life;
 	}
 }
