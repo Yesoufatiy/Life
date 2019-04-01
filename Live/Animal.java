@@ -2,7 +2,7 @@ import java.util.HashSet;
 
 public class Animal extends Creature {
 	private HashSet resources = new HashSet();
-	private String species;
+	private String species = "animal";
 
 	public HashSet getResources() {
 		return resources;
@@ -66,5 +66,9 @@ public class Animal extends Creature {
 
 	public void setSpecies(String species) {
 		this.species = species;
+	}
+	
+	public String toString() {
+		return species;
 	}
 }

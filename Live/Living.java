@@ -3,13 +3,14 @@ import java.util.Scanner;
 
 public class Living {
 	static Person player;
+	static Scanner reader = new Scanner(System.in);
+
 	public static void main(String[] args) {
 		System.out.println("How would you like to start? The currently available options are:");
 		System.out.println("'s' for basic starter kit");
 		System.out.println("'y' for a start based on Yusuf's Life");
 		System.out.println("'a' for an animal player's perspective");
 		System.out.println("'Q' for QUITTING");
-		Scanner reader = new Scanner(System.in);
 		String reading = reader.nextLine();
 		while (!reading.equals("Q")) {
 			if (reading.equals("s")) {
@@ -33,20 +34,21 @@ public class Living {
 				}
 			} else if (reading.equals("a")) {
 				ArrayList surroundings = starterKit();
-				Animal player;
-				System.out.println("Choose what kind of animal to take place of:");
-				player = new Lion();
-				System.out.println("You are now a " + player.getSpecies());
-				while (!reading.equals("D")) {
-					actions();
-					reading = reader.nextLine();
-					if (reading.equals("f"))
-						System.out.println("Animals cannot do that.");
-					else if (reading.equals("i")) {
-						System.out.println("Here is your inventory:");
-						System.out.println(player.getResources());
-					} else if (!reading.equals("D"))
-						act(reading);
+				Animal player = animals();
+				if (!player.getSpecies().equals("animal")) {
+
+					System.out.println("You are now a " + player.getSpecies());
+					while (!reading.equals("D")) {
+						actions();
+						reading = reader.nextLine();
+						if (reading.equals("f"))
+							System.out.println("Animals cannot do that.");
+						else if (reading.equals("i")) {
+							System.out.println("Here is your inventory:");
+							System.out.println(player.getResources());
+						} else if (!reading.equals("D"))
+							act(reading);
+					}
 				}
 			} else {
 				System.out.println(
@@ -134,7 +136,28 @@ public class Living {
 	
 	public static void act(String next) {
 		if (next.equals("f")) {
-			vegs();
+			System.out.println("What would you like to farm?");
+			System.out.println("'c' for farming carrots");
+			System.out.println("'t' for farming tomatos");
+			System.out.println("'p' for farming potatos");
+			System.out.println("'m' for farming maize");
+			System.out.println("'E' for ENDING");
+			String read = reader.nextLine();
+			if (read.equals("c")) {
+				player.getInventory().add("carrots");
+				System.out.println("You have farmed carrots.");
+			} else if (read.equals("t")) {
+				player.getInventory().add("tomatos");
+				System.out.println("You have farmed tomatos.");
+			} else if (read.equals("p")) {
+				player.getInventory().add("potatos");
+				System.out.println("You have farmed potatos.");
+			} else if (read.equals("m")) {
+				player.getInventory().add("maize");
+				System.out.println("You have farmed maize.");
+			} else if (read.equals("E")) {
+				System.out.println("Nothing was farmed.");
+			} else System.out.println("That is not a farmable option.");
 		} else if (next.equals("a")) {
 			
 		} else if (next.equals("i")) {
@@ -145,12 +168,22 @@ public class Living {
 		} else System.out.println("That action is not available yet.");
 	}
 	
-	public static void vegs() {
-		System.out.println("What would you like to farm?");
-		System.out.println("'c' for farming carrots");
-		System.out.println("'t' for farming tomatos");
-		System.out.println("'p' for farming potatos");
-		System.out.println("'m' for farming maize");
-		System.out.println("'E' for ENDING");
+	public static Animal animals() {
+		System.out.println("Choose what kind of animal to take place of:");
+		System.out.println("'l' for lion");
+		System.out.println("'e' for elephant");
+		System.out.println("'h' for hawk");
+		System.out.println("'C' for CHANGING");
+		String read = reader.nextLine();
+		if (read.equals("l")) {
+			return new Lion();
+		} else if (read.equals("e")) {
+			return new Elephant();
+		} else if (read.equals("h")) {
+			return new Hawk();
+		} else if (read.equals("C")) {
+			return new Animal();
+		} else System.out.println("That is not an available animal to use as a character player.");
+		return new Animal();
 	}
 }
