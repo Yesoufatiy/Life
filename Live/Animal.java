@@ -2,6 +2,7 @@ import java.util.HashSet;
 
 public class Animal extends Creature {
 	private HashSet resources = new HashSet();
+	private String species;
 
 	public HashSet getResources() {
 		return resources;
@@ -57,5 +58,13 @@ public class Animal extends Creature {
 		if (getHunger() < 0)
 			setHunger(0);
 		return true;
+	}
+
+	public String getSpecies() {
+		return species;
+	}
+
+	public void setSpecies(String species) {
+		this.species = species;
 	}
 }

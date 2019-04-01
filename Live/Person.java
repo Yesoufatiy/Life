@@ -9,11 +9,18 @@ public class Person extends Creature {
 	private Building place;
 	
 	public Person() {
-		
+		setEnergyGain(70);
+		setHealthGain(35);
+		setFilling(95);
+		setEnergyCost(65);
 	}
 	
 	public Person(String name) {
 		this.setName(name);
+		setEnergyGain(70);
+		setHealthGain(35);
+		setFilling(95);
+		setEnergyCost(65);
 	}
 
 	public boolean hunt(Animal prey) {
@@ -42,9 +49,13 @@ public class Person extends Creature {
 			this.setEnergy(this.getEnergy() - opponent.getEnergyCost());
 			if (this.getEnergy() < 0)
 				this.setEnergy(0);
+			opponent.fight(this);
 			return false;
 		}
 		opponent.setAlive(false);
+		this.setEnergy(this.getEnergy() - opponent.getEnergyCost());
+		if (this.getEnergy() < 0)
+			this.setEnergy(0);
 		this.getInventory().addAll(opponent.getInventory());
 		return true;
 	}
