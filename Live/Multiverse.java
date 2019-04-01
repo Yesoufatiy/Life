@@ -57,7 +57,7 @@ public class Multiverse {
 	}
 	
 	public Planet getWorld() {
-		return getUniverses().get(0).getGalaxies().get(0).getSolarSystems().get(0).getPlanets().get(2);
+		return this.find("Laniakea").find("MilkyWay").find("theSolarSystem").find("Earth");
 	}
 	
 	public Universe find(String seeking) {

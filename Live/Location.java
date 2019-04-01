@@ -7,9 +7,11 @@ public class Location {
 						Arrays.asList(new Continent[] {new Continent("North America",
 								Arrays.asList(new Country[] {new Country("Canada"), new Country("USA",
 										Arrays.asList(new State[] {new State("California", new Community("Bay Area",
-												Arrays.asList(new City[] {new City("San Jose", new Neigborhood("Berryessa", new Street("Fumia Pl", new Block("18", new House("1806"))))),
+												Arrays.asList(new City[] {new City("San Jose", new Neigborhood("Berryessa", new Street("Fumia Pl", new House("1806")))),
 														new City("Santa Clara"), new City("Fremont")}))), new State("New York"), new State("Florida"), new State("Hawaii")})), new Country("Mexico")})),
-								new Continent("South America"), new Continent("Europe"), new Continent("Africa"), new Continent("Asia"), new Continent("Australia"), new Continent("Antarctica")})),
+								new Continent("South America"), new Continent("Europe"), new Continent("Africa",
+										new Country("Egypt", new State("Cairo", new Community("Masr", new City("First Settlement", new Neigborhood("Yasmeen 8", new Street("Ja'far ibn Abi Talib", new Building("390")))))))),
+								new Continent("Asia"), new Continent("Australia"), new Continent("Antarctica")})),
 						new Planet("Mars"), new Planet("Jupiter"), new Planet("Saturn"), new Planet("Uranus"), new Planet("Neptune"), new Planet("Pluto")})))));
 //		Multiverse existence = new Multiverse();
 //		Universe Laniakea = new Universe();

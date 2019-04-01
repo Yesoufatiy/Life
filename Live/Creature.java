@@ -1,11 +1,20 @@
 
 public class Creature extends Organism {
-	private int strength;
+	private int strength = 0;
 	private int energy = 100;
-	private int energyGain;
+	private int hunger = 0;
 
 	public void eat(Plant plant) {
-		this.setEnergy(getEnergy() + plant.getEnergyGain());
+		plant.setAlive(false);
+		this.setHealth(this.getHealth() + plant.getHealthGain());
+		if (getHealth() > 100)
+			setHealth(100);
+		this.setEnergy(this.getEnergy() + plant.getEnergyGain());
+		if (getEnergy() > 100)
+			setEnergy(100);
+		this.setHunger(this.getHunger() - plant.getFilling());
+		if (getHunger() < 0)
+			setHunger(0);
 	}
 
 	public int getStrength() {
@@ -24,11 +33,11 @@ public class Creature extends Organism {
 		this.energy = energy;
 	}
 
-	public int getEnergyGain() {
-		return energyGain;
+	public int getHunger() {
+		return hunger;
 	}
 
-	public void setEnergyGain(int energyGain) {
-		this.energyGain = energyGain;
+	public void setHunger(int hunger) {
+		this.hunger = hunger;
 	}
 }

@@ -2,7 +2,7 @@ import java.util.Collection;
 
 public class Building {
 	private String name;
-	private Block block;
+	private Street street;
 
 	public Building() {
 
@@ -16,18 +16,10 @@ public class Building {
 		return getName();
 	}
 
-	public Block getBlock() {
-		return block;
-	}
-
-	public void setBlock(Block block) {
-		this.block = block;
-	}
-
 	public void printAddress() {
-		System.out.println(this + " " + this.getBlock().getStreet() + ",");
-		System.out.println(this.getBlock().getStreet().getNeigborhood().getCity() + ", "
-				+ this.getBlock().getStreet().getNeigborhood().getCity().getCommunity().getState());
+		System.out.println(this + " " + this.getStreet() + ",");
+		System.out.println(this.getStreet().getNeigborhood().getCity() + ", "
+				+ this.getStreet().getNeigborhood().getCity().getCommunity().getState());
 	}
 
 	public String getName() {
@@ -36,5 +28,13 @@ public class Building {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Street getStreet() {
+		return street;
+	}
+
+	public void setStreet(Street street) {
+		this.street = street;
 	}
 }

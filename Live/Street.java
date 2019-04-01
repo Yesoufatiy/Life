@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Street {
-	private ArrayList<Block> blocks = new ArrayList<Block>();
+	private ArrayList<Building> buildings = new ArrayList<Building>();
 	private String name;
 	private Neigborhood neigborhood;
 
@@ -11,8 +11,8 @@ public class Street {
 
 	}
 
-	public Street(Block in) {
-		blocks.add(in);
+	public Street(Building in) {
+		buildings.add(in);
 		in.setStreet(this);
 	}
 
@@ -20,29 +20,29 @@ public class Street {
 		setName(title);
 	}
 
-	public Street(String title, Block in) {
+	public Street(String title, Building in) {
 		setName(title);
-		blocks.add(in);
+		buildings.add(in);
 		in.setStreet(this);
 	}
 
-	public Street(Collection<Block> group) {
-		blocks.addAll(group);
+	public Street(Collection<Building> group) {
+		buildings.addAll(group);
 		group.forEach(in -> in.setStreet(this));
 	}
 
-	public Street(String title, Collection<Block> group) {
+	public Street(String title, Collection<Building> group) {
 		setName(title);
-		blocks.addAll(group);
+		buildings.addAll(group);
 		group.forEach(in -> in.setStreet(this));
 	}
 
-	public ArrayList<Block> getBlocks() {
-		return blocks;
+	public ArrayList<Building> getBuildings() {
+		return buildings;
 	}
 
-	public void setBlocks(ArrayList<Block> blocks) {
-		this.blocks = blocks;
+	public void setBuildings(ArrayList<Building> buildings) {
+		this.buildings = buildings;
 	}
 
 	public String toString() {
@@ -65,8 +65,8 @@ public class Street {
 		this.name = name;
 	}
 	
-	public Block find(String seeking) {
-		for (Block check: blocks)
+	public Building find(String seeking) {
+		for (Building check: buildings)
 			if (check.getName() == seeking)
 				return check;
 		return null;

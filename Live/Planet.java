@@ -67,7 +67,7 @@ public class Planet {
 	}
 	
 	public Building myAddress() {
-		return this.getContinents().get(0).getCountries().get(1).getStates().get(0).getCommunities().get(0).getCities().get(0).getNeigborhoods().get(0).getStreets().get(0).getBlocks().get(0).getBuildings().get(0);
+		return this.find("North America").find("USA").find("California").find("Bay Area").find("San Jose").find("Berryessa").find("Fumia Pl").find("1806");
 	}
 
 	public String getName() {

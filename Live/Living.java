@@ -15,8 +15,11 @@ public class Living {
 				System.out.println(((Person) myStart().get(12)).introduction() + " lives at ");
 				((Person) myStart().get(12)).getPlace().printAddress();
 			} else {
-				System.out.println("I am a little human being child kid and I am homeless and alone and I have nothing.");
+				System.out.println("I am a little human being child kid cry baby and I am homeless and alone and I have nothing.");
 			}
+			System.out.println("Your life has ended. How would you like to restart? The currently available options are:");
+			System.out.println("'s' for basic starter kit");
+			System.out.println("'y' for a start based on Yusuf's Life");
 			reading = reader.nextLine();
 		}
 	}

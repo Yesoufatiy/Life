@@ -17,16 +17,34 @@ public class Person extends Creature {
 	}
 
 	public boolean hunt(Animal prey) {
-		if (this.getStrength() <= prey.getStrength())
+		if (this.getStrength() <= prey.getStrength() || this.getEnergy() <= prey.getEnergyCost()) {
+			this.setEnergy(this.getEnergy() - prey.getEnergyCost());
+			if (this.getEnergy() < 0)
+				this.setEnergy(0);
 			return false;
-		this.setEnergy(getEnergy() + prey.getEnergyGain());
+		}
+		prey.setAlive(false);
+		this.setHealth(this.getHealth() + prey.getHealthGain());
+		if (getHealth() > 100)
+			setHealth(100);
+		this.setEnergy(this.getEnergy() + prey.getEnergyGain());
+		if (getEnergy() > 100)
+			setEnergy(100);
+		this.setHunger(this.getHunger() - prey.getFilling());
+		if (getHunger() < 0)
+			setHunger(0);
 		this.getInventory().addAll(prey.getResources());
 		return true;
 	}
 
 	public boolean fight(Person opponent) {
-		if (this.getStrength() <= opponent.getStrength())
+		if (this.getStrength() <= opponent.getStrength() || this.getEnergy() <= opponent.getEnergyCost()) {
+			this.setEnergy(this.getEnergy() - opponent.getEnergyCost());
+			if (this.getEnergy() < 0)
+				this.setEnergy(0);
 			return false;
+		}
+		opponent.setAlive(false);
 		this.getInventory().addAll(opponent.getInventory());
 		return true;
 	}
@@ -40,10 +58,18 @@ public class Person extends Creature {
 	}
 
 	public boolean farm(Plant veg) {
-		if (getEnergy() < veg.getEnergyCost())
+		if (this.getEnergy() < veg.getEnergyCost())
 			return false;
-		getInventory().add(veg);
-		setEnergy(getEnergy() - veg.getEnergyCost());
+		this.setHealth(this.getHealth() + veg.getHealthGain());
+		if (getHealth() > 100)
+			setHealth(100);
+		this.setEnergy(this.getEnergy() + veg.getEnergyGain());
+		if (getEnergy() > 100)
+			setEnergy(100);
+		this.setHunger(this.getHunger() - veg.getFilling());
+		if (getHunger() < 0)
+			setHunger(0);
+		this.getInventory().add(veg);
 		return true;
 	}
 
