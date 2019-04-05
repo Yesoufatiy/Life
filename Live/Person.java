@@ -6,7 +6,7 @@ public class Person extends Creature {
 	private double balance = 0;
 	private HashSet inventory = new HashSet();
 	private String name;
-	private Building place;
+	private Building place = null;
 	
 	public Person() {
 		setEnergyGain(70);
@@ -49,7 +49,7 @@ public class Person extends Creature {
 			this.setEnergy(this.getEnergy() - opponent.getEnergyCost());
 			if (this.getEnergy() < 0)
 				this.setEnergy(0);
-			opponent.fight(this);
+			opponent.revenge(this);
 			return false;
 		}
 		opponent.setAlive(false);
@@ -57,6 +57,21 @@ public class Person extends Creature {
 		if (this.getEnergy() < 0)
 			this.setEnergy(0);
 		this.getInventory().addAll(opponent.getInventory());
+		return true;
+	}
+	
+	public boolean revenge(Person avenge) {
+		if (this.getStrength() <= avenge.getStrength() || this.getEnergy() <= avenge.getEnergyCost()) {
+			this.setEnergy(this.getEnergy() - avenge.getEnergyCost());
+			if (this.getEnergy() < 0)
+				this.setEnergy(0);
+			return false;
+		}
+		avenge.setAlive(false);
+		this.setEnergy(this.getEnergy() - avenge.getEnergyCost());
+		if (this.getEnergy() < 0)
+			this.setEnergy(0);
+		this.getInventory().addAll(avenge.getInventory());
 		return true;
 	}
 
@@ -130,5 +145,9 @@ public class Person extends Creature {
 	
 	public String introduction() {
 		return this.name + " child of " + father.getName() + " and " + mother.getName();
+	}
+	
+	public boolean isHuman() {
+		return true;
 	}
 }

@@ -69,6 +69,10 @@ public class Planet {
 	public Building myAddress() {
 		return this.find("North America").find("USA").find("California").find("Bay Area").find("San Jose").find("Berryessa").find("Fumia Pl").find("1806");
 	}
+	
+	public Building nowhere() {
+		return this.find("Nowhere").find("Nowhere").find("Nowhere").find("Nowhere").find("Nowhere").find("Nowhere").find("Nowhere").find("Nowhere");
+	}
 
 	public String getName() {
 		return name;

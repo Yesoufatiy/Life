@@ -11,7 +11,7 @@ public class Location {
 														new City("Santa Clara"), new City("Fremont")}))), new State("New York"), new State("Florida"), new State("Hawaii")})), new Country("Mexico")})),
 								new Continent("South America"), new Continent("Europe"), new Continent("Africa",
 										new Country("Egypt", new State("Cairo", new Community("Masr", new City("First Settlement", new Neigborhood("Yasmeen 8", new Street("Ja'far ibn Abi Talib", new Building("390")))))))),
-								new Continent("Asia"), new Continent("Australia"), new Continent("Antarctica")})),
+								new Continent("Asia"), new Continent("Australia"), new Continent("Antarctica"), new Continent("Nowhere", new Country("Nowhere", new State("Nowhere", new Community("Nowhere", new City("Nowhere", new Neigborhood("Nowhere", new Street("Nowhere", new Building("Nowhere"))))))))})),
 						new Planet("Mars"), new Planet("Jupiter"), new Planet("Saturn"), new Planet("Uranus"), new Planet("Neptune"), new Planet("Pluto")})))));
 //		Multiverse existence = new Multiverse();
 //		Universe Laniakea = new Universe();

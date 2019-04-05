@@ -1,14 +1,14 @@
 import java.util.HashSet;
 
 public class Animal extends Creature {
-	private HashSet resources = new HashSet();
+	private HashSet<String> resources = new HashSet<String>();
 	private String species = "animal";
 
-	public HashSet getResources() {
+	public HashSet<String> getResources() {
 		return resources;
 	}
 
-	public void setResources(HashSet resources) {
+	public void setResources(HashSet<String> resources) {
 		this.resources = resources;
 	}
 
@@ -59,6 +59,10 @@ public class Animal extends Creature {
 			setHunger(0);
 		return true;
 	}
+	
+	public String getName() {
+		return species;
+	}
 
 	public String getSpecies() {
 		return species;
@@ -70,5 +74,9 @@ public class Animal extends Creature {
 	
 	public String toString() {
 		return species;
+	}
+	
+	public boolean isHuman() {
+		return false;
 	}
 }
